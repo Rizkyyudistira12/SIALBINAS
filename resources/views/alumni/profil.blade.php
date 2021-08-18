@@ -81,6 +81,13 @@
               <textarea class="form-control summernote-simple">{{ $alumni->alamat }}</textarea>
             </div>
           </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label>Testimoni</label>
+              <textarea class="form-control summernote-simple">{{ $alumni->testimoni }}</textarea>
+            </div>
+          </div>
           <div class="row">
               <div class="form-group col-12">
                 <label>Avatar</label>

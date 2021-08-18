@@ -9,15 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin Login Page</title>
+  <title>Login Page SIALBINAS</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('adm_login/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ asset('adm_login/css/sb-admin-2.min.css') }}" rel="stylesheet">
-  <link rel="shortcut icon" href="{{ asset('admin/img/LOGO BIRU baru.png') }}">
+  <link rel="shortcut icon" href="{{ asset('frontend/img/logo-smk.png') }}">
 
 </head>
 
@@ -45,10 +47,22 @@
                   <div class="col-lg-6">
                     <div class="p-5">
                       <div class="text-center">
-                        <img src="{{ asset('admin/img/LOGO BIRU baru.png') }}" width="100px" height="auto" alt="">
+                        @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+                        @if (session('failed'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('failed') }}
+                        </div>
+                        @endif
+
+                        <img src="{{ asset('frontend/img/logo-smk.png') }}" width="100px" height="auto" alt="">
                         <br>
                         <br>
-                        <h1 class="h4 text-gray-900 mb-4">Login Page Admin <i>My Alumni</i> </h1>
+                        <h1 class="h4 text-gray-900 mb-4" style="font-family: 'Lexend', sans-serif;">Login Page <i>My Alumni</i> </h1>
                       </div>
                       <form class="user" method="post" action="/postlogin">
                         @csrf
@@ -67,8 +81,11 @@
                         <a class="small" href="#">Forgot Password?</a>
                       </div>
                       <div class="text-center">
-                        <a class="small" href="#">Daftar Akun Anda!</a>
+                        <a class="small" href="/register">Daftar Akun Anda!</a>
                       </div>
+                      <div class="text-center mt-3">
+                        <a href="/" style="color: black"><i class="fas fa-undo" style="font-size: 20px; color:blue" ></i> Kembali</a>
+                    </div>
                     </div>
                   </div>
                 </div>

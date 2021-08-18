@@ -28,6 +28,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function posts()
+   {
+       return $this->hasMany(Post::class);
+   }
+
+   public function alumni()
+   {
+       return $this->hasOne(Alumni::class);
+   }
+
+   public function forum()
+   {
+       return $this->hasMany(Forum::class);
+   }
+
+   public function komentar()
+   {
+       return $this->hasMany(Komentar::class);
+   }
+
     /**
      * The attributes that should be cast to native types.
      *

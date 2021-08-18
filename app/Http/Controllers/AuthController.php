@@ -26,13 +26,13 @@ class AuthController extends Controller
         if(Auth::attempt($request->only('name','password'))){
             return redirect('/dashboard');
         }
-        return redirect('/login');
+        return redirect('/login')->with('failed','Kesalahan Pada Password atau Username, Coba Lagi !');;
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('success','Anda Sudah Keluar');
     }
 
     /**

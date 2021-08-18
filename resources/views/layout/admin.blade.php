@@ -68,9 +68,28 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/kuliah">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Info Kuliah (Admin)</span></a>
+      </li>
+
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/loker">
+          <i class="fas fa-user-tie"></i>
+          <span>Info Loker (Admin)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/event">
           <i class="fas fa-fw fa-bullhorn"></i>
-          <span>Berita & Pengumuman</span></a>
+          <span>Info Event (Admin)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/forum">
+          <i class="far fa-comments"></i>
+          <span>Forum Diskusi</span></a>
       </li>
       @endif
       <!-- Divider -->
@@ -78,6 +97,12 @@
       <div class="sidebar-heading">
         Alumni
       </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/profilsaya">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Profilku</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/daftaralumni">
@@ -92,18 +117,24 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="/infokuliah">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Info Kuliah</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="/agenda">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Agenda & Event</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/profilku">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Profilku</span></a>
+        <a class="nav-link" href="/forum">
+          <i class="far fa-comments"></i>
+          <span>Forum Diskusi</span></a>
       </li>
-      <!-- Nav Item - Tables -->
       
+      <!-- Nav Item - Tables -->
 
       <li class="nav-item">
         <a class="nav-link" href="/logout">
@@ -137,11 +168,11 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="/alumni">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input name="cari" type="text" class="form-control bg-light border-0 small" placeholder="Cari Disini" aria-label="Search">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -206,38 +237,37 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php 
-                  date_default_timezone_set("Asia/Jakarta"); 
-                  $jam = date('H:i');
-                  if($jam > '05:30' && $jam < '10:00')
-                  {
-                    $salam = 'Pagi';
-                  }elseif ($jam >= '10:00' && $jam < '15:00') 
-                  {
-                    $salam = 'Siang';
-                  }elseif ($jam < '18:00') 
-                  {
-                    $salam = 'Sore';
-                  }else {
-                    $salam = 'Malam';
-                  }
-                  echo 'Selamat ' . $salam;   
-                  ?>, 
-                  {{ auth()->user()->name }}</span>
-                <img class="img-profile rounded-circle" src="@if (auth()->user()->role == 'siswa')
-                {{ auth()->user()->siswa->getAvatar() }}
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  <?php
+                  date_default_timezone_set('Asia/Jakarta');
+                  $jam=date("G");
+                  if($jam>=0&&$jam<=11)
+                  $sapa="Selamat Pagi.";
+                  else if($jam>=12&&$jam<=15)
+                  $sapa="Selamat Siang.";
+                  else if($jam>=16&&$jam<=18)
+                  $sapa="Selamat Sore.";
+                  else if($jam>=19&&$jam<=23)
+                  $sapa="Selamat Malam.";
+                  ?>
+                  <div class="sapaan">
+                  <?php echo $sapa; ?>  {{ auth()->user()->name }} 
+                  </div>
+                 </span>
+                <img class="img-profile rounded-circle" src="@if (auth()->user()->role == 'alumni')
+                {{ auth()->user()->alumni->getAvatar() }}
                 @else
                 /images/default.png
                 @endif">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/profilsaya">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Profil Saya
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -463,7 +493,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by SIALBI</span>
+            <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by SIALBINAS</span>
           </div>
         </div>
       </footer>

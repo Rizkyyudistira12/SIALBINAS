@@ -14,9 +14,13 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_alumni = \App\Alumni::all();
+        if($request->has('cari')){
+            $data_alumni = \App\Alumni::where('nama','LIKE','%'.$request->cari.'%')->get();
+        }else {
+            $data_alumni = \App\Alumni::all();
+        }
         return view('alumni.index',['data_alumni' => $data_alumni]);
     }
 
@@ -93,6 +97,11 @@ class AlumniController extends Controller
         return view('alumni.profil',['alumni' => $alumni]);
     }
 
+    public function profilsaya()
+    {
+        return view('alumni.profilsaya');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -108,7 +117,7 @@ class AlumniController extends Controller
             $alumni->avatar = $request->file('avatar')->getClientOriginalName();
             $alumni->save();
         }
-        return redirect('/alumni')->with('success','Data Berhasil Diubah');
+        return redirect('/profilsaya')->with('success','Data Berhasil Diubah');
     }
 
     public function delete(Alumni $alumni)
@@ -116,6 +125,25 @@ class AlumniController extends Controller
         $alumni->delete();
         return redirect('/alumni')->with('success','Data Berhasil Dihapus');
     }
+
+    public function agenda()
+    {
+        return view('alumni.agenda');
+    }
+
+
+    public function daftaralumni()
+    {
+        $data_alumni = \App\Alumni::all();
+        return view('alumni.list',['data_alumni' => $data_alumni]);
+    }
+
+    public function detailalumni(Alumni $alumni)
+    {
+        return view('alumni.detail',['alumni' => $alumni]);
+    }
+
+    
 
     /**
      * Remove the specified resource from storage.
