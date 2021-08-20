@@ -55,11 +55,11 @@ class SiteController extends Controller
         return redirect('/login')->with('success','Selamat Akun Anda Terdaftar');
     }
 
-    // public function singlepost($slug)
-    // {
-    //     $post = Post::where('slug','=',$slug)->first();
-    //     return view('sites.singlepost',compact(['post']));
-    // }
+    public function singlepost($slug)
+    {
+        $post = Post::where('slug','=',$slug)->first();
+        return view('sites.singlepost',compact(['post']));
+    }
 
     /**
      * Show the form for creating a new resource.

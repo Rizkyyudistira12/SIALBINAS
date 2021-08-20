@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth','CheckRole:admin']],function(){
     Route::get('/event/{event}/edit','EventController@edit');
     Route::post('/event/{event}/update','EventController@update');
     Route::get('/event/{event}/delete','EventController@delete');
+    Route::get('/posts','PostController@index');
 
 });
 
@@ -79,7 +80,7 @@ Route::group(['middleware' => ['auth','CheckRole:alumni']],function(){
 
 });
 
-// Route::get('/{slug}',[
-//     'uses' => 'SiteController@singlepost',
-//     'as' => 'site.single.post'
-// ]);
+Route::get('/{slug}',[
+    'uses' => 'SiteController@singlepost',
+    'as' => 'site.single.post'
+]);

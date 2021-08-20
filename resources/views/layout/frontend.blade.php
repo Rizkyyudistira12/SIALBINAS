@@ -58,6 +58,20 @@
             </div>
             </ul>
           </div>
+
+          &nbsp;
+          &nbsp;
+          &nbsp;
+
+          <div>
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+              <i class="fas fa-moon" onclick="setDarkMode(true)"></i>
+              <i class="fas fa-sun" onclick="setDarkMode(false)"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+
         </div>
     </nav>
       <!--End Of Navbar-->

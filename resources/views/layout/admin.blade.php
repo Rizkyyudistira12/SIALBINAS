@@ -87,6 +87,13 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="/posts">
+          <i class="fas fa-pen-square"></i>
+          <span>Posts (Admin)</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="/forum">
           <i class="far fa-comments"></i>
           <span>Forum Diskusi</span></a>
