@@ -67,7 +67,7 @@
                                     <tr>
                                         <td>Tanggal</td>
                                         <td>:</td>
-                                        <td>{{ $post->created_at }}</td>
+                                        <td>{{ $post->created_at->format('D,d M Y') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Oleh</td>

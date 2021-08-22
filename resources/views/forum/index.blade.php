@@ -10,9 +10,9 @@
       <div class="panel">
           <div class="panel-heading">
             <div class="right">
-              <button type="button" class="btn btn-sm btn-primary float-right mb-2" data-toggle="modal" data-target="#exampleModal">
-                Tambah Data
-            </button>
+              <a href="{{ route('forum.add') }}" class="btn btn-sm btn-primary float-right mb-2">
+                Tambah Posts
+            </a>
             </div>
           </div>
             <div class="panel-body">
@@ -20,7 +20,7 @@
               @foreach($forum as $frm)
               <li>
                 <img src="{{ $frm->user->alumni->getAvatar() }}" width="5%" style="border-radius: 100%" alt="Avatar" class="img-circle pull-left avatar">
-                <p><a href="#">{{ $frm->user->alumni->nama }}</a> 
+                <p><a href="/forum/{{ $frm->id }}/view">{{ $frm->user->alumni->nama }}</a> 
                  {{$frm->judul}} <span class="timestamp">{{ $frm->created_at->diffForHumans() }}</span></p>
               </li>
               @endforeach
@@ -32,7 +32,7 @@
 </div>
 
 
-  <!-- Modal -->
+  {{-- <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -73,7 +73,7 @@
           </div>
       </div>
       </div>
-  </div>
+  </div> --}}
 
 
 

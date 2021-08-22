@@ -17,7 +17,7 @@
             </div>
             <div class="col-6">
                 <!-- Button trigger modal -->
-                <a href="#" class="btn btn-sm btn-primary float-right mb-2">
+                <a href="{{ route('posts.add') }}" class="btn btn-sm btn-primary float-right mb-2">
                     Tambah Posts
                 </a>
             </div>
@@ -45,7 +45,7 @@
                   </tr>
                   @endforeach
                 </tbody>
-              </table>
+            </table>
         </div>
         
     </div>

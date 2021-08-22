@@ -35,6 +35,19 @@ Route::group(['middleware' => ['auth','CheckRole:admin']],function(){
     Route::post('/alumni/{alumni}/update','AlumniController@update');
     Route::get('/alumni/{alumni}/delete','AlumniController@delete');
     Route::get('/alumni/{alumni}/profil','AlumniController@profil');
+    Route::get('/alumni/export','AlumniController@export'); 
+    Route::get('/posts','PostController@index')->name('posts.index');
+
+    Route::get('post/add',[
+        'uses' => 'PostController@add',
+        'as' => 'posts.add',
+    ]);
+
+    Route::post('post/create',[
+        'uses' => 'PostController@create',
+        'as' => 'posts.create'
+    ]);
+
 
 
     Route::get('/loker','LokerController@index');
@@ -55,7 +68,7 @@ Route::group(['middleware' => ['auth','CheckRole:admin']],function(){
     Route::get('/event/{event}/edit','EventController@edit');
     Route::post('/event/{event}/update','EventController@update');
     Route::get('/event/{event}/delete','EventController@delete');
-    Route::get('/posts','PostController@index');
+ 
 
 });
 
@@ -64,7 +77,13 @@ Route::group(['middleware' => ['auth','CheckRole:admin,alumni']],function(){
     Route::get('/dashboard','DashboardController@index');
     Route::get('/profilsaya','AlumniController@profilsaya');
     Route::post('/alumni/{alumni}/update','AlumniController@update');
+    Route::get('forum/add',[
+        'uses' => 'ForumController@add',
+        'as' => 'forum.add',
+    ]);
     Route::get('/forum','ForumController@index');
+    Route::post('forum/create','ForumController@create');
+    Route::get('/forum/{forum}/view','ForumController@view');
 });
 
 Route::group(['middleware' => ['auth','CheckRole:alumni']],function(){

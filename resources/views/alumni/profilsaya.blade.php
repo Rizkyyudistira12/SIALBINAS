@@ -12,21 +12,21 @@
       <p class="card-text">{{ auth()->user()->alumni->gender }}</small></p>
       <p class="card-text">{{ auth()->user()->alumni->pekerjaan }}</p>
       <p class="card-text"><small class="text-muted">{{ auth()->user()->alumni->alamat }}</small></p>
-      <div class="card-footer text-center">
+      {{-- <div class="card-footer text-center">
         <div class="font-weight-bold mb-2">Sosial Media {{ auth()->user()->alumni->nama }}</div>
         <a href="#" class="btn btn-social-icon btn-facebook mr-1">
-          <i class="fab fa-facebook-f"></i>
+          <i class="fas fa-facebook-f"></i>
         </a>
         <a href="#" class="btn btn-social-icon btn-twitter mr-1">
-          <i class="fab fa-twitter"></i>
+          <i class="fas fa-twitter"></i>
         </a>
         <a href="#" class="btn btn-social-icon btn-github mr-1">
-          <i class="fab fa-github"></i>
+          <i class="fas fa-github"></i>
         </a>
         <a href="#" class="btn btn-social-icon btn-instagram">
-          <i class="fab fa-instagram"></i>
+          <i class="fas fa-instagram"></i>
         </a>
-      </div>
+      </div> --}}
     </div>
   </div>
   <div class="card">

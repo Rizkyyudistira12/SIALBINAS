@@ -11,7 +11,7 @@
       <h5 class="card-title">{{ $alumni->nama }}</h5>
       <p class="card-text">{{ $alumni->pekerjaan }}</p>
       <p class="card-text"><small class="text-muted">{{ $alumni->alamat }}</small></p>
-      <div class="card-footer text-center">
+      {{-- <div class="card-footer text-center">
         <div class="font-weight-bold mb-2">Sosial Media {{ $alumni->nama }}</div>
         <a href="#" class="btn btn-social-icon btn-facebook mr-1">
           <i class="fab fa-facebook-f"></i>
@@ -25,7 +25,7 @@
         <a href="#" class="btn btn-social-icon btn-instagram">
           <i class="fab fa-instagram"></i>
         </a>
-      </div>
+      </div> --}}
     </div>
   </div>
   <div class="card">

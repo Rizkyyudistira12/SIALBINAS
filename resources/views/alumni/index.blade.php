@@ -19,8 +19,8 @@
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-sm btn-primary float-right mb-2" data-toggle="modal" data-target="#exampleModal">
                     Tambah Data
-                </button>
-                <a href="/alumni" class="btn btn-sm btn-warning float-right mr-4"> <i class="fas fa-angle-left" style="font-size: 15px"></i> Kembali</a>
+                </button> 
+                <a href="/alumni/export" class="btn btn-sm btn-success float-right mr-4"><i class="fas fa-print">  Export Excel</i></a>
             </div>
             
             <table class="table table-bordered">

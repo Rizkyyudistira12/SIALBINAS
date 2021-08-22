@@ -20,14 +20,26 @@ class PostController extends Controller
         return view('posts.index',compact(['posts']));
     }
 
+    public function add()
+    {
+        return view('posts.add');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'user_id' => auth()->user()->id,
+            'thumbnail' => $request->thumbnail
+        ]);
+
+        return redirect()->route('posts.index')->with('success','Postingan Berhasil Diinput !');
     }
 
     /**

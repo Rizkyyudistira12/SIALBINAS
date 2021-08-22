@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use App\Alumni;
+use App\Exports\AlumniExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AlumniController extends Controller
 {
@@ -154,5 +156,10 @@ class AlumniController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AlumniExport, 'Alumni.xlsx');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Forum;
 use Illuminate\Http\Request;
 
+
 class ForumController extends Controller
 {
     /**
@@ -14,8 +15,13 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forum = Forum::paginate(10);
+        $forum = Forum::orderBy('created_at','desc')->paginate(10);
         return view('forum.index',compact(['forum']));
+    }
+
+    public function add()
+    {
+        return view('forum.add');
     }
 
     /**
@@ -23,9 +29,16 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->request->add(['user_id' => auth()->user()->id]);
+        $forum = Forum::create($request->all());
+        return redirect('/forum')->with('success','Forum Berhasil Dibuat');
+    }
+
+    public function view(Forum $forum)
+    {
+        return view('forum.view',compact(['forum']));
     }
 
     /**
