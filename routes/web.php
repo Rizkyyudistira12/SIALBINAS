@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth','CheckRole:admin,alumni']],function(){
     Route::get('/forum','ForumController@index');
     Route::post('forum/create','ForumController@create');
     Route::get('/forum/{forum}/view','ForumController@view');
+    Route::post('/forum/{forum}/view','ForumController@postkomentar');
 });
 
 Route::group(['middleware' => ['auth','CheckRole:alumni']],function(){

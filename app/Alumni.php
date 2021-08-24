@@ -18,5 +18,17 @@ class Alumni extends Model
         // if avatar available
         return asset('images/'.$this->avatar);
     }
+
+    public function nama()
+    {
+        return $this->belongsTo(Alumni::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withDefault(['avatar' => 'default.jpg']);
+    }
+
+
 }
 
