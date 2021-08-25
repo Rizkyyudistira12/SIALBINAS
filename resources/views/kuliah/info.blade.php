@@ -15,7 +15,9 @@
           <div class="card-body">
             <h5 class="card-title">{{ $kuliah->universitas }}</h5>
             <p class="card-text">{{ $kuliah->jalur_masuk }}</p>
-            <span class="badge badge-success"><p class="card-text"><a href="https://wa.me/082118433635" style="color: #fff">{{ $kuliah->pendaftaran }}</a></p></span>
+            <div class="form-group">
+              <a href="https://forms.gle/XC3mE48tHjEvMRU88" class="btn btn-sm btn-primary">Daftar Kuliah</a>
+            </div>
             {{-- <a href="/detailkuliah" class="btn btn-primary">Selengkapnya</a> --}}
           </div>
         </div>

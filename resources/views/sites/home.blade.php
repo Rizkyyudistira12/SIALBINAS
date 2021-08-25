@@ -175,7 +175,7 @@
                 <p class="card-text">Pada era sekarang, di mana perubahan semakin cepat, 
                   termasuk di bidang IT
                 </p>
-                <a class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
+                <a href="http://smknasionalbandung.sch.id/collaborative-study-smknas-bdg" class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -190,7 +190,7 @@
                 <p class="card-text">Mau Kuliah, Biaya nya mahal. Mau kerja, lowongan lagi sedikit karena pandemi.
                   Sekarang, Kami Punya Solusi Untuk Anda.
                 </p>
-                <a class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
+                <a href="http://smknasionalbandung.sch.id/kerjajapan" class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@
               </center>
               <div class="card-body">
                 <h5 class="card-title">PPDB SMK Nasional Bandung TA 2021/2022</h5>
-                <a class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
+                <a href="http://smknasionalbandung.sch.id/ppdb2122" class="badge rounded-pill bg-primary" style="color: #fff">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -227,26 +227,43 @@
       </div>
     </div>
     <div class="row">
-      @foreach($posts as $post)
       <div class="col">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col-md-8">
+          <div class="col-md-4">
             <div class="card text-center">
               <br>
               <center>
-                <img src="{{ $post->thumbnail()}}" width="250px" alt="">
+                <img src="{{ asset('frontend/img/No Data.jpg') }}" width="250px" alt="">
               </center>
               <div class="card-body">
-                <h5 class="card-title">{{ $post->title }}</h5>
-                <p> {{ $post->created_at->format('d M Y') }} Diposting Oleh | {{ $post->user->name }} </p>
-                {!! $post->content !!}
-                <a href="{{ route('site.single.post',$post->slug) }}" class="badge badge-pill badge-primary">Selengkapnya</a>
+                <h5 class="card-title">Tidak Ada Event Saat Ini</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center">
+              <br>
+              <center>
+                <img src="{{ asset('frontend/img/No Data.jpg') }}" width="250px" alt="">
+              </center>
+              <div class="card-body">
+                <h5 class="card-title">Tidak Ada Event Saat Ini</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center">
+              <br>
+              <center>
+                <img src="{{ asset('frontend/img/No Data.jpg') }}" width="250px" alt="">
+              </center>
+              <div class="card-body">
+                <h5 class="card-title">Tidak Ada Event Saat Ini</h5>
               </div>
             </div>
           </div>
         </div>
       </div>
-      @endforeach
     </div>
     <center>
       <br>

@@ -1,117 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
   <title>@yield('title')</title>
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-  <!-- CSS Libraries -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{ asset('admin2/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin2/css/components.css') }}">
-  <style>
-    .ck-editor__editable_inline {
-    min-height: 500px;
-    }
-  </style>
-  
-  @if (auth()->user()->role == 'admin')
+  <!-- Custom fonts for this template-->
+  <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="{{ asset('admin/img/LOGO BIRU baru.png') }}">
-  @endif
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  @if (auth()->user()->role == 'alumni')
-  <link rel="shortcut icon" href="{{ asset('frontend/img/logo-smk.png') }}">
-  @endif
+  <!-- Custom styles for this template-->
+  <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
-<body>
-  <div id="app">
-    <div class="main-wrapper">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-        <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-          </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-          </div>
-        </form>
+<body id="page-top">
 
-        <ul class="navbar-nav navbar-right">
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="@if (auth()->user()->role == 'alumni')
-            {{ auth()->user()->alumni->getAvatar() }}
-            @else
-            /images/default.png
-            @endif" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block"><?php
-              date_default_timezone_set('Asia/Jakarta');
-              $jam=date("G");
-              if($jam>=0&&$jam<=11)
-              $sapa="Selamat Pagi.";
-              else if($jam>=12&&$jam<=15)
-              $sapa="Selamat Siang.";
-              else if($jam>=16&&$jam<=18)
-              $sapa="Selamat Sore.";
-              else if($jam>=19&&$jam<=23)
-              $sapa="Selamat Malam.";
-              ?>
-                 <div class="sapaan">
-                  <?php echo $sapa; ?>  {{ auth()->user()->name }} 
-                  </div>
-            </div></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="/profilsaya" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profil
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="/logout" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
-            </div>
-          </li>
-        </ul>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-      </nav>
-      <div class="main-sidebar">
-        <aside id="sidebar-wrapper">
-          <br>
-          @if (auth()->user()->role == 'admin')
-          <div class="sidebar-brand">
-            <img src="{{ asset('admin/img/LOGO BIRU baru.png') }}" width="80px" height="auto" alt="">
-          </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <img src="{{ asset('admin/img/LOGO BIRU baru.png') }}" width="40px" height="auto" alt="">
-          </div>
-          @endif
+    @if (auth()->user()->role == 'admin')
+      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    @endif
+    <!-- Sidebar -->
+    
+    @if (auth()->user()->role == 'alumni')
+      <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+    @endif
 
-          @if (auth()->user()->role == 'alumni')
-          <div class="sidebar-brand">
-            <img src="{{ asset('frontend/img/logo-smk.png') }}" width="80px" height="auto" alt="">
-          </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <img src="{{ asset('frontend/img/logo-smk.png') }}" width="40px" height="auto" alt="">
-          </div>
-          @endif
 
-          <ul class="sidebar-menu">
-              <li class="menu-header">Admin</li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/dashboard">
-                  <i class="fas fa-fw fa-tachometer-alt"></i>
-                  <span>Dashboard</span></a>
-              </li>
-              @if (auth()->user()->role == 'admin')
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
+        <div class="sidebar-brand-icon">
+          <img src="{{ asset('admin/img/LOGO BIRU baru.png') }}" width="80px" height="auto" alt="">
+        </div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/dashboard">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      @if (auth()->user()->role == 'admin')
               <hr class="sidebar-divider">
               <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -144,12 +86,12 @@
                   <span>Info Event (Admin)</span></a>
               </li>
         
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link" href="/posts">
                   <i class="fas fa-pen-square"></i>
                   <span>Posts (Admin)</span>
                 </a>
-              </li>
+              </li> --}}
         
               <li class="nav-item">
                 <a class="nav-link" href="/forum">
@@ -157,97 +99,453 @@
                   <span>Forum Diskusi</span></a>
               </li>
               @endif
-              <!-- Divider -->
-              
-              <li class="menu-header">Alumni</li>
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/profilsaya">
-                  <i class="fas fa-fw fa-user"></i>
-                  <span>Profilku</span></a>
-              </li>
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/daftaralumni">
-                  <i class="fas fa-fw fa-user-graduate"></i>
-                  <span>Daftar Alumni</span></a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link" href="/infoloker">
-                  <i class="fas fa-fw fa-user-md"></i>
-                  <span>Info Lowongan Kerja</span></a>
-              </li>
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/infokuliah">
-                  <i class="fas fa-graduation-cap"></i>
-                  <span>Info Kuliah</span></a>
-              </li>
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/agenda">
-                  <i class="fas fa-fw fa-calendar-alt"></i>
-                  <span>Agenda & Event</span></a>
-              </li>
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/forum">
-                  <i class="far fa-comments"></i>
-                  <span>Forum Diskusi</span></a>
-              </li>
-              
-              <!-- Nav Item - Tables -->
-        
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">
-                  <i class="fas fa-fw fa-sign-out-alt"></i>
-                  <span>Keluar</span></a>
-              </li>
-            </ul>
+      <!-- Divider -->
 
-        </aside>
+      <div class="sidebar-heading">
+        Alumni
       </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/profilsaya">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Profilku</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/daftaralumni">
+          <i class="fas fa-fw fa-user-graduate"></i>
+          <span>Daftar Alumni</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/infoloker">
+          <i class="fas fa-fw fa-user-md"></i>
+          <span>Info Lowongan Kerja</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/infokuliah">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Info Kuliah</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/agenda">
+          <i class="fas fa-fw fa-calendar-alt"></i>
+          <span>Agenda & Event</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/forum">
+          <i class="far fa-comments"></i>
+          <span>Forum Diskusi</span></a>
+      </li>
+      
+      <!-- Nav Item - Tables -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Keluar</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>@yield('title')</h1>
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input name="cari" type="text" class="form-control bg-light border-0 small" placeholder="Cari Disini" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter"></span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter"></span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php 
+                  date_default_timezone_set("Asia/Jakarta"); 
+                  $jam = date('H:i');
+                  if($jam > '05:30' && $jam < '10:00')
+                  {
+                    $salam = 'Pagi';
+                  }elseif ($jam >= '10:00' && $jam < '15:00') 
+                  {
+                    $salam = 'Siang';
+                  }elseif ($jam < '18:00') 
+                  {
+                    $salam = 'Sore';
+                  }else {
+                    $salam = 'Malam';
+                  }
+                  echo 'Selamat ' . $salam;   
+                  ?>, 
+                  {{ auth()->user()->name }}</span>
+                <img class="img-profile rounded-circle" src="@if (auth()->user()->role == 'alumni')
+                {{ auth()->user()->alumni->getAvatar() }}
+                @else
+                /images/default.png
+                @endif">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/profilsaya">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profil Saya
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
           </div>
 
-          @yield('content')
-            
-        </section>
-      </div>
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by SIALBINAS</a>
+          <!-- Content Row -->
+          <div class="row">
+            @yield('content')
+          </div>
+
+          {{-- <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Direct
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Social
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Referral
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Color System -->
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                      Primary
+                      <div class="text-white-50 small">#4e73df</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-success text-white shadow">
+                    <div class="card-body">
+                      Success
+                      <div class="text-white-50 small">#1cc88a</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-info text-white shadow">
+                    <div class="card-body">
+                      Info
+                      <div class="text-white-50 small">#36b9cc</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-warning text-white shadow">
+                    <div class="card-body">
+                      Warning
+                      <div class="text-white-50 small">#f6c23e</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-danger text-white shadow">
+                    <div class="card-body">
+                      Danger
+                      <div class="text-white-50 small">#e74a3b</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-secondary text-white shadow">
+                    <div class="card-body">
+                      Secondary
+                      <div class="text-white-50 small">#858796</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-6 mb-4">
+
+              <!-- Illustrations -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                </div>
+                <div class="card-body">
+                  <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
+                  </div>
+                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                </div>
+              </div>
+
+              <!-- Approach -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                </div>
+                <div class="card-body">
+                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                </div>
+              </div>
+
+            </div>
+          </div> --}}
+
         </div>
-        <div class="footer-right">
-          1.3.0
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by SIALBINAS</span>
+          </div>
         </div>
       </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Pilih "Keluar" jika ingin Keluar. Pilih "Batal" untuk batal Keluar</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="/logout">Keluar</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- General JS Scripts -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="{{ asset('admin2/js/stisla.js') }}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-  <!-- JS Libraies -->
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-  <!-- Template JS File -->
-  <script src="{{ asset('admin2/js/scripts.js') }}"></script>
-  <script src="{{ asset('admin2/js/custom.js') }}"></script>
-  <script src="{{ asset('frontend/js/ckeditor.js') }}"></script>
-
-  <!-- Page Specific JS File -->
-  <script src="{{ asset('admin2/js/page/index-0.js') }}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
@@ -257,4 +555,5 @@
   </script>
 @yield('footer')
 </body>
+
 </html>

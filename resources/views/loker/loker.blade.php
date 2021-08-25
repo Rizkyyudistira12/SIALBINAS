@@ -34,6 +34,10 @@
               <label for="exampleFormControlInput1">Alamat Perusahaan</label>
               <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ $loker->alamat }}" >
             </div>
+
+            <div class="form-group">
+              <a href="https://forms.gle/aZayuSPH3mtcncdr6" class="btn btn-sm btn-primary">Daftar Pekerjaan</a>
+            </div>
             {{-- <a href="/descloker" class="btn btn-primary">Selengkapnya</a> --}}
           </div>
         </div>
